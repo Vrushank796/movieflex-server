@@ -3,6 +3,14 @@ const db = new DbLogic();
 
 const getMovie = (req, res, next) => {
   db.getAll().then(function (result) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Max-Age', '1800');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type');
+    res.setHeader(
+      'Access-Control-Allow-Methods',
+      'PUT, POST, GET, DELETE, PATCH, OPTIONS'
+    );
     res.send(result);
   });
 };
@@ -22,9 +30,9 @@ const findMovie = (req, res, next) => {
 };
 
 const addMovie = (req, res, next) => {
-  var genreList = req.body.genres.split(",").map(x => ({ 
-    key: x, 
-    value: x 
+  var genreList = req.body.genres.split(',').map((x) => ({
+    key: x,
+    value: x,
   }));
   var newMovieData = {
     id: req.body.id,
@@ -45,9 +53,9 @@ const addMovie = (req, res, next) => {
 
 const updateMovie = (req, res, next) => {
   let movieId = req.params.movieId;
-  var genreList = req.body.genres.split(",").map(x => ({ 
-    key: x, 
-    value: x 
+  var genreList = req.body.genres.split(',').map((x) => ({
+    key: x,
+    value: x,
   }));
   var updatedMovieData = {
     title: req.body.title,
@@ -57,7 +65,7 @@ const updateMovie = (req, res, next) => {
     stars: req.body.stars,
   };
   db.updateMovieById(updatedMovieData, movieId).then(function (result) {
-    res.send({msg: 'Movie Updated Successfully', status: true});
+    res.send({ msg: 'Movie Updated Successfully', status: true });
   });
 };
 
@@ -69,7 +77,6 @@ const deleteMovie = (req, res, next) => {
 };
 
 const getOrdersByUserId = (req, res, next) => {
-  
   const userId = req.params.userId;
   db.getOrdersByUserId(userId).then(function (result) {
     res.send(result);
@@ -89,12 +96,21 @@ const getRecommendMovie = (req, res, next) => {
     });
     db.getRecommendMovie(genreArr).then(function (result) {
       // console.log(result.length);
-      res.send({ result: result, msg: "Found Movies", status: true });
+      res.send({ result: result, msg: 'Found Movies', status: true });
     });
   } else {
-    res.send({ msg: "No Recommended Movie found", status: false });
+    res.send({ msg: 'No Recommended Movie found', status: false });
   }
-
 };
 
-module.exports = { addMovie, getMovie, updateMovie, deleteMovie, findMovie, getAllMovie, getOrdersByUserId, getRecommendMovie,getAllOrders };
+module.exports = {
+  addMovie,
+  getMovie,
+  updateMovie,
+  deleteMovie,
+  findMovie,
+  getAllMovie,
+  getOrdersByUserId,
+  getRecommendMovie,
+  getAllOrders,
+};
