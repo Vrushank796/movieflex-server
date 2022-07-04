@@ -8,7 +8,7 @@ var cors = require('cors');
 
 //For deployment give headers in cors set access-control-allow-credentials as true
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://movieflexcanada.netlify.app',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
