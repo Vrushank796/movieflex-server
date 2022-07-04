@@ -5,6 +5,14 @@ const theatre = require('./Controller/Theatre.js');
 var express = require('express');
 var app = express();
 var cors = require('cors');
+
+//For deployment give headers in cors set access-control-allow-credentials as true
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
 var path = require('path');
 var bodyParser = require('body-parser');
 const { checkLogin } = require('./middleware/authUser');
@@ -12,7 +20,7 @@ const { checkLogin } = require('./middleware/authUser');
 var cookieParser = require('cookie-parser');
 
 var port = process.env.PORT || 3000;
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
