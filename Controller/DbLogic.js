@@ -209,7 +209,7 @@ module.exports = class DbLogic {
       showtimeId: showtimeId,
       seatsOccupied: seats,
     };
-    console.log('movie seat info ' + movieSeatsInfo.seats);
+    // console.log('movie seat info ' + movieSeatsInfo.seats);
     let movieSeatsData = new MovieSeats(movieSeatsInfo);
     await movieSeatsData.save();
   }

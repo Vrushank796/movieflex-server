@@ -18,7 +18,7 @@ const checkLogin = (req, res, next) => {
       }
     });
   } else {
-    console.log('Continue creating new login token..');
+    // console.log('Continue creating new login token..');
     next();
   }
 };
@@ -43,8 +43,8 @@ const authRole = (data) => (req, res, next) => {
 };
 
 // const time = 2*24*60*60;
-const createToken = (id,role, name) => {
-  return jwt.sign({ id,role,name }, process.env.SECRET_KEY);
+const createToken = (id, role, name) => {
+  return jwt.sign({ id, role, name }, process.env.SECRET_KEY);
 };
 
 module.exports = { authRole, createToken, checkLogin };

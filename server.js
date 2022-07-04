@@ -29,7 +29,7 @@ var config = require('./config/movieDb');
 const DbLogic = require('./Controller/DbLogic.js');
 const db = new DbLogic();
 
-console.log(config.url);
+// console.log(config.url);
 
 var statusCode = db.initialize(config.url);
 if (statusCode == 2) {

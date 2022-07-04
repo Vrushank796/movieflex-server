@@ -29,12 +29,12 @@ const bookMovie = (req, res, next) => {
   let movieId = movieOrderData.movieId;
   let seats = movieOrderData.seats;
 
-  console.log(
-    'Root of bookMovie method:' + theatreId,
-    movieId,
-    showtimeId,
-    seats
-  );
+  // console.log(
+  //   'Root of bookMovie method:' + theatreId,
+  //   movieId,
+  //   showtimeId,
+  //   seats
+  // );
   //Movie booking - Check Movie seats if occupied or not
   db.checkMovieSeats(theatreId, movieId, showtimeId, seats).then(function (
     result
@@ -58,9 +58,9 @@ const bookMovie = (req, res, next) => {
 
             db.checkMovieSeatsDetails(theatreId, movieId, showtimeId).then(
               function (checkSeatsOccupiedArray) {
-                console.log(checkSeatsOccupiedArray);
+                // console.log(checkSeatsOccupiedArray);
                 if (checkSeatsOccupiedArray.length == 0) {
-                  console.log(seats);
+                  // console.log(seats);
                   //Calling func to update occupied seats in movieSeats collection
                   db.addMovieSeatsDetails(
                     theatreId,
@@ -156,11 +156,11 @@ const sendMail = async (userData, orderDetails) => {
       '<p>Best wishes,<br>MovieFlex team</p>',
   });
 
-  console.log('Message sent: %s', info.messageId);
+  // console.log('Message sent: %s', info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account
-  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 };
 

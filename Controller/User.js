@@ -20,20 +20,28 @@ const loginUser = function (req, res) {
   db.findUser(userEmail)
     .then(function (result) {
       if (result == null || result == undefined) {
-        res.send({msg: 'Invalid User Email or Password',isLoggedIn: false});
+        res.send({ msg: 'Invalid User Email or Password', isLoggedIn: false });
       } else {
         bcrypt.compare(userPassword, result.password).then((data) => {
           if (data == true) {
-            console.log()
-            const token = createToken((result._id).valueOf(),result.role, result.name);
+            console.log();
+            const token = createToken(
+              result._id.valueOf(),
+              result.role,
+              result.name
+            );
             // console.log(token);
             isLoggedIn = true;
             name = result.name;
             // const time = 2*24*60*60;
             // res.cookie('tokenCookie', token, { httpOnly: true });
-            res.send({msg: 'User LoggedIn Successfully', token: token, isLoggedIn: true});
+            res.send({
+              msg: 'User LoggedIn Successfully',
+              token: token,
+              isLoggedIn: true,
+            });
           } else {
-            res.send({msg: 'Invalid Login Credentials', isLoggedIn: false});
+            res.send({ msg: 'Invalid Login Credentials', isLoggedIn: false });
           }
         });
       }
@@ -76,11 +84,13 @@ const updateUser = async (req, res) => {
     phoneNumber: req.body.phoneNumber,
   };
   // console.log(userData, req.body.name); //Testing Register Form
-  db.updateUser(updatedUserData,id).then(function (result) {
+  db.updateUser(updatedUserData, id).then(function (result) {
     if (result) {
-      res.status(200).send({msg: 'User Updated', status: true});
+      res.status(200).send({ msg: 'User Updated', status: true });
     } else {
-      res.status(200).send({msg: 'Error Updating User Details', status: true});
+      res
+        .status(200)
+        .send({ msg: 'Error Updating User Details', status: true });
     }
   });
 };
@@ -90,9 +100,9 @@ const deleteUser = async (req, res) => {
   // console.log(userData, req.body.name); //Testing Register Form
   db.deleteUser(id).then(function (result) {
     if (result) {
-      res.status(200).send({msg: 'User Deleted Successfully', status: true});
+      res.status(200).send({ msg: 'User Deleted Successfully', status: true });
     } else {
-      res.status(200).send({msg: 'Error deleting User', status: true});
+      res.status(200).send({ msg: 'Error deleting User', status: true });
     }
   });
 };
@@ -110,4 +120,11 @@ const getUserById = (req, res, next) => {
   });
 };
 
-module.exports = { loginUser, registerUser,getAllUser,getUserById,updateUser,deleteUser };
+module.exports = {
+  loginUser,
+  registerUser,
+  getAllUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+};

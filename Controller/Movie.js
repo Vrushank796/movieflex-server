@@ -48,7 +48,7 @@ const addMovie = (req, res, next) => {
     genreList: genreList,
     stars: req.body.stars,
   };
-  console.log(newMovieData);
+  // console.log(newMovieData);
   db.addNewMovie(newMovieData).then(function (result) {
     res.send({ msg: 'Movie Added Successfully', status: true });
   });
