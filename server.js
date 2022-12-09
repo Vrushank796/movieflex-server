@@ -6,12 +6,12 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 
-//For deployment give headers in cors set access-control-allow-credentials as true
-// const corsOptions = {
-//   origin: 'https://movieflexcanada.netlify.app',
-//   credentials: true, //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// };
+// For deployment give headers in cors set access-control-allow-credentials as true
+const corsOptions = {
+  origin: 'https://movieflexcanada.netlify.app',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 var path = require('path');
 var bodyParser = require('body-parser');
