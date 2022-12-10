@@ -22,7 +22,7 @@ var cookieParser = require('cookie-parser');
 
 var port = process.env.PORT || 3000;
 // app.use(cors(corsOptions));
-app.use(cors({ origin: 'https://movieflexcanada.netlify.app/' }));
+app.use(cors({ origin: 'https://movieflexcanada.netlify.app' }));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -31,6 +31,7 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Headers',
     'Origin, X-Requested With, Content-Type, Accept'
   );
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
