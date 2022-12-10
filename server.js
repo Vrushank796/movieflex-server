@@ -7,12 +7,12 @@ var app = express();
 var cors = require('cors');
 
 // For deployment give headers in cors set access-control-allow-credentials as true
-const corsOptions = {
-  origin: ['https://movieflexcanada.netlify.app'],
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-  origin: true,
-};
+// const corsOptions = {
+//   origin: *,
+//   credentials: true, //access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+//   origin: true,
+// };
 
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -21,8 +21,8 @@ const { checkLogin } = require('./middleware/authUser');
 var cookieParser = require('cookie-parser');
 
 var port = process.env.PORT || 3000;
-app.use(cors(corsOptions));
-// app.use(cors());
+// app.use(cors(corsOptions));
+app.use(cors());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
