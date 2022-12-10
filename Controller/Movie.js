@@ -14,7 +14,7 @@ const getMovie = (req, res, next) => {
     // );
     // res.setHeader('X-Powered-By', ' 3.2.1');
     // res.setHeader('Content-Type', 'application/json;charset=utf-8');
-    res.addHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(result);
   });
 };
