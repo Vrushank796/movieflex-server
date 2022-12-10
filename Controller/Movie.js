@@ -3,7 +3,10 @@ const db = new DbLogic();
 
 const getMovie = (req, res, next) => {
   db.getAll().then(function (result) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+      'Access-Control-Allow-Origin',
+      'https://movieflexcanada.netlify.app'
+    );
     res.setHeader(
       'Access-Control-Allow-Headers',
       'X-Requested-With, content-type'

@@ -25,7 +25,10 @@ var port = process.env.PORT || 3000;
 app.use(cors({ origin: 'https://movieflexcanada.netlify.app' }));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://movieflexcanada.netlify.app'
+  );
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header(
     'Access-Control-Allow-Headers',
