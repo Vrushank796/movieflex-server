@@ -3,20 +3,20 @@ const db = new DbLogic();
 
 const getMovie = (req, res, next) => {
   db.getAll().then(function (result) {
-    res.setHeader(
-      'Access-Control-Allow-Origin',
-      'https://movieflexcanada.netlify.app'
-    );
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-Requested-With, content-type'
-    );
-    res.setHeader(
-      'Access-Control-Allow-Methods',
-      'PUT,POST,GET,DELETE,OPTIONS'
-    );
-    res.setHeader('X-Powered-By', ' 3.2.1');
-    res.setHeader('Content-Type', 'application/json;charset=utf-8');
+    // res.setHeader(
+    //   'Access-Control-Allow-Origin',
+    //   'https://movieflexcanada.netlify.app'
+    // );
+    // res.setHeader(
+    //   'Access-Control-Allow-Headers',
+    //   'X-Requested-With, content-type'
+    // );
+    // res.setHeader(
+    //   'Access-Control-Allow-Methods',
+    //   'PUT,POST,GET,DELETE,OPTIONS'
+    // );
+    // res.setHeader('X-Powered-By', ' 3.2.1');
+    // res.setHeader('Content-Type', 'application/json;charset=utf-8');
     res.send(result);
   });
 };
