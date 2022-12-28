@@ -2,6 +2,7 @@ const movie = require('./Controller/Movie.js');
 const user = require('./Controller/User.js');
 const order = require('./Controller/Order.js');
 const theatre = require('./Controller/Theatre.js');
+const compression = require('compression');
 var express = require('express');
 var app = express();
 var cors = require('cors');
@@ -21,14 +22,12 @@ const { checkLogin } = require('./middleware/authUser');
 var cookieParser = require('cookie-parser');
 
 var port = process.env.PORT || 3000;
+var allow_origin = process.env.ALLOW_ORIGIN;
 // app.use(cors(corsOptions));
-app.use(cors());
+app.use([cors(), compression()]);
 
 app.use((req, res, next) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://movieflexcanada.netlify.app'
-  );
+  res.header('Access-Control-Allow-Origin', `${allow_origin}`);
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header(
     'Access-Control-Allow-Headers',
